@@ -30,44 +30,51 @@ puts calculator.divide(98,2)
 # ELEVATOR ------------------------------------------------------------------------------------------------
 
 class Elevator
+
 	attr_accessor :floor
-
-	def initialize(floor)
+	
+  def initialize(floor)
 		@floor= floor 
-    	puts "Welcome! You are on floor #{@floor}"
-  	end
+    puts "Select your floor."
+  end
 
-   	def target_floor
-   		puts "Select your floor."
-      	target_floor = gets.chomp.to_i
-
-      	if target_floor > @floor 
-      		puts "We are going up to floor #{target_floor}!"
-      	elsif target_floor < @floor
-        	puts "We are going down to floor #{target_floor}!"
-      	else
-        	puts "Oops! Try again, you are already on floor #{@floor}" 
-      	end
-
-      	@floor = target_floor
+  def up
+    @floor = @floor + 1
+    if @floor <= 20
+      puts "You are on floor #{@floor}."
+    else
+      puts "You are on the top floor."
     end
-
-    def greet
-      puts "Hello! You are on floor #{@floor}!"
+  end
+  
+  def down
+    @floor = @floor - 1
+    if @floor > 1
+      puts "You are on floor #{@floor}."
+    else
+      puts "You have reached the ground floor."
     end
+  end
 
-    def music
-      system("open http://reallygoodelevatormusic.com/wp-content/uploads/2014/02/96-26-June-12.mp3")
-    end	
+  def greet
+    puts "Hello! You are on floor #{@floor}!"
+  end
+  
+  def music
+    system("open http://reallygoodelevatormusic.com/wp-content/uploads/2014/02/96-26-June-12.mp3")
+  end	
 
 end
 
-elevator = Elevator.new(8)
+
+elevator = Elevator.new(4)
 puts elevator
 puts elevator.greet
-puts elevator.target_floor
-
-# not sure this is actually working:
+puts elevator.up
+puts elevator.down
+puts elevator.down
+puts elevator.down
+puts elevator.down
 # puts elevator.music
 
 
